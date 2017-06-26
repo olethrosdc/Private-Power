@@ -32,8 +32,9 @@
 \theoremstyle{example}
 \newtheorem{example}{Example}
 \newtheorem{obs}{Observation}
+\newcommand{\loss} {\ell}
 
-
+\newcommand {\defn} {\triangleq}
 \newcommand{\Z}{\makebox[0.06cm][l]{\sf Z}{\sf Z}}
 \newcommand{\Prob}{\makebox[0.06cm][l]{\sf P}{\sf P}}
 \newcommand{\CS}{\mathcal{S}}
@@ -54,6 +55,7 @@
 \newcommand{\mb}{\mathbf}
 \newcommand{\demand}{x}
 \newcommand{\Demand}{\mathcal{X}}
+\newcommand{\fdemand}{\beta}
 \newcommand{\price}{p}
 \newcommand{\cost}{J}
 \newcommand{\nmech}{M}
@@ -89,9 +91,37 @@ general by participating in an online price mechanism? Secondly, given
 that they participate in the mechanism, how much privacy can they
 expect with respect to their household occupancy?
 
-\section{Consumption privacy.}
 
-Consider a mechanism that, given the demanded consumption
+\subsection{The price setting mechanism.}
+In Cournot-type models, price depends on the total demand. This
+dependence can be any increasing function. The consumers submit their
+demand schedule, and the price structure is published. The question is
+whether a given can learn anything about others' consumptions or
+hidden variables (occupancy for example) based on observing the
+price. 
+
+Let the central utility have a quadratic loss function based on total
+demand $\demand_t \defn \sum_i \demand_t^i$ of users
+$i = 1, \ldots, n$, at time $t$.
+\begin{equation}
+  \label{eq:loss}
+  \loss_t(x) = \cost(\demand_t + \fdemand_t)^2/2,
+\end{equation}
+where $\fdemand_t$ is a fixed demand term, that must be met independently \christos{What does this fixed demand represent?}
+Then, for a large number of players, the price 
+\begin{equation}
+  \price_t = \cost(\demand_t + \fdemand_t),
+  \label{eq:price}
+\end{equation}
+ensures that at the Nash equilibrium minimises $\loss_t$, and that the individual cost is
+\begin{equation}
+  c_t^i = \price_t x_t^i.
+  \label{eq:cost}
+\end{equation}
+
+\subsection{Consumption privacy.}
+
+Consider a mechanism like the above that, given the demanded consumption
 $\demand_t^i$ of households $i$ at times $t$, decides upon a price
 level $\price_{t}$ for that time period, which depends on
 $\demand_{t}$. As the mechanism's price level is public knowledge, it
@@ -103,7 +133,7 @@ If the mechanism for determining the price level is
 $\epsilon$-differentially private for period $t$, the we must have
 \[
 \left|
-  \ln \frac{\Pr(\price_t \mid \demand_t)}{\Pr(\price_t \mid x'_t)}
+  \ln \frac{\Pr(\price_t \mid \fdemand_t)}{\Pr(\price_t \mid x'_t)}
 \right|
  \leq \epsilon
 \]
@@ -115,21 +145,6 @@ period: for $T$ periods, this only guarantees $T \epsilon$
 differential privacy.
 
 
-\subsection{The price setting mechanism.}
-The price-setting mechanism needs to be differentially private. The simplest way is to use the exponential mechanism. The utility of the price-setter is to ensure the demand peak is low.. this can be achieved by having a utility function $\left(\baseline_t + \frac{1}{N}\sum_{i=1}^N \demand_{i,t}\right)^2$, where $\baseline_t$ is an inflexible power demand and $\demand_{i,t}$ is the power demand of customer $i$ at time $t$. 
-In general, a price-setting mechanism $\nmech$ itself determines the price $\price_t$ at time $t$ in a manner dependent upon a baseline price $\baseline_t$ at time $t$ and $\demand_{i,t}$, the expected demand by use $i$ at time $t$.
-\[
-\price_t = \nmech\left(\baseline_t + \frac{1}{N}\sum_{i=1}^N \demand_{i,t}\right),
-\]
-
-
-The baseline price may in turn depend on the overall supply and demand
-for the time of day, while the individual demands are estimated from
-local consumer data.  The cost for the $i$-th consumer is going to be
-\[
-\cost_i(\demand_i) = \sum_{t=1}^T \price_t \demand_{i,t}
-\]
-If we wish the price to be differentially private with respect to an individual's demand (at any given time period) then there are two standard methods whereby we can achieve this. The first is through adding Laplace noise to the price determined by the non-private mechanism $\nmech$. The second is by formulating the problem as an optimisation problem, whose solution as $\eps \to \infty$ converges to the mechanism $\nmech$.
 
 
 \bibliographystyle{plain}
