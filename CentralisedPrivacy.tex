@@ -57,7 +57,7 @@
 \newcommand{\Demand}{\mathcal{X}}
 \newcommand{\fdemand}{\beta}
 \newcommand{\price}{p}
-\newcommand{\cost}{J}
+\newcommand{\cost}{c}
 \newcommand{\nmech}{M}
 \newcommand{\dpmech}{\nmech_{\eps,\delta}}
 \newcommand{\neigh}{\mathcal{N}}
@@ -93,12 +93,13 @@ expect with respect to their household occupancy?
 
 
 \subsection{The price setting mechanism.}
-In Cournot-type models, price depends on the total demand. This
+In Cournot-type models, price depends on the total demand.
+\christos{Who is the competition here? We only have a single provider,
+  right? Why are you referring to Cournot competition?}  This
 dependence can be any increasing function. The consumers submit their
 demand schedule, and the price structure is published. The question is
 whether a given can learn anything about others' consumptions or
-hidden variables (occupancy for example) based on observing the
-price. 
+hidden variables (occupancy for example) based on observing the price.
 
 Let the central utility have a quadratic loss function based on total
 demand $\demand_t \defn \sum_i \demand_t^i$ of users
@@ -107,14 +108,14 @@ $i = 1, \ldots, n$, at time $t$.
   \label{eq:loss}
   \loss_t(x) = \cost(\demand_t + \fdemand_t)^2/2,
 \end{equation}
-\christos{I don't understand this loss function. How does it determine the price? There is no price in the above equation.}
+\christos{I still don't understand this loss function. If $\cost \geq 0$ is a constant, then setting it to $0$ will minimise the firm's loss. That doesn't make sense to me.}
 where $\fdemand_t$ is a fixed demand term, that must be met independently \christos{What does this fixed demand represent?}
 Then, for a large number of players, the price 
 \begin{equation}
   \price_t = \cost(\demand_t + \fdemand_t),
   \label{eq:price}
 \end{equation}
-ensures that at the Nash equilibrium minimises $\loss_t$, and that the individual cost is
+ensures that at the Nash equilibrium \christos{Who are the players here? The consumers? Does the demand depend on the posted price, or the price on the posted demand? I don't think it makes sense to talk about a long-term equilibrium in a dynamic market..} minimises $\loss_t$, and that the individual cost is
 \begin{equation}
   c_t^i = \price_t x_t^i.
   \label{eq:cost}
