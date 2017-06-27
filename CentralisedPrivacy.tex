@@ -77,9 +77,9 @@
 
 
 \begin{document} 
-\title{Notes: Pricey of Privacy in Real-time Electricity Markets}
+\title{The Price of Privacy in Real-time Electricity Markets}
 
-\author{Christos and Maryam}
+\author{Christos Dimitrakakis \and Maryam Kar}
 \maketitle
 
 \section{Introduction.}
@@ -107,6 +107,7 @@ $i = 1, \ldots, n$, at time $t$.
   \label{eq:loss}
   \loss_t(x) = \cost(\demand_t + \fdemand_t)^2/2,
 \end{equation}
+\christos{I don't understand this loss function. How does it determine the price? There is no price in the above equation.}
 where $\fdemand_t$ is a fixed demand term, that must be met independently \christos{What does this fixed demand represent?}
 Then, for a large number of players, the price 
 \begin{equation}
@@ -144,7 +145,15 @@ added or missing.  However this only protects us against one time
 period: for $T$ periods, this only guarantees $T \epsilon$
 differential privacy.
 
+\section{A private consumption mechanism}
 
+Privacy can be achieved within each period through a differentially
+private mechanism. The simplest one to use is the exponential
+mechanism. This would mean that, at each step $t$, we choose a price $p$ with probability
+%\begin{equation}
+%  \label{eq:exponential-price}
+%  \Pr(p_t = p \mid \demand_t) = \frac{\exp(\epsilon \cost(\demand_t + \fdemand_d))} \ldots
+%\end{equation}
 
 
 \bibliographystyle{plain}
