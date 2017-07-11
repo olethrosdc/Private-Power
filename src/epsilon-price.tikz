@@ -1,0 +1,57 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.285\textwidth,
+height=0.225\textwidth,
+at={(0\textwidth,0\textwidth)},
+scale only axis,
+unbounded coords=jump,
+xmin=0,
+xmax=1,
+xlabel={$\epsilon$},
+ymin=49.6,
+ymax=50.8,
+ylabel={$\price$},
+axis background/.style={fill=white},
+legend style={at={(0.97,0.03)}, anchor=south east, legend cell align=left, align=left, legend plot pos=left, draw=black}
+]
+\addplot [color=blue]
+  table[row sep=crcr]{%
+0	50.75\\
+0.1	50.75\\
+0.2	50.75\\
+0.3	50.75\\
+0.4	50.75\\
+0.5	50.75\\
+0.6	50.75\\
+0.7	50.75\\
+0.8	50.75\\
+0.9	50.75\\
+1	50.75\\
+};
+\addlegendentry{Exponential}
+
+\addplot [color=black!50!green]
+  table[row sep=crcr]{%
+0	nan\\
+0.1	49.6165598284114\\
+0.2	50.1832799142057\\
+0.3	50.3721866094705\\
+0.4	50.4666399571029\\
+0.5	50.5233119656823\\
+0.6	50.5610933047353\\
+0.7	50.5880799754874\\
+0.8	50.6083199785514\\
+0.9	50.6240622031568\\
+1	50.6366559828411\\
+};
+\addlegendentry{Laplace }
+
+\end{axis}
+\end{tikzpicture}%

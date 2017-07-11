@@ -1,0 +1,57 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.285\textwidth,
+height=0.225\textwidth,
+at={(0\textwidth,0\textwidth)},
+scale only axis,
+unbounded coords=jump,
+xmin=0,
+xmax=1,
+xlabel={$\epsilon$},
+ymin=-300,
+ymax=300,
+ylabel={$\util$},
+axis background/.style={fill=white},
+legend style={at={(0.97,0.03)}, anchor=south east, legend cell align=left, align=left, legend plot pos=left, draw=black}
+]
+\addplot [color=blue]
+  table[row sep=crcr]{%
+0	164.937125\\
+0.1	210.721556978089\\
+0.2	229.005765877681\\
+0.3	236.685699672647\\
+0.4	240.631944470664\\
+0.5	243.00628892918\\
+0.6	244.589585558344\\
+0.7	245.720535843134\\
+0.8	246.568750007531\\
+0.9	247.228472222665\\
+1	247.756250000026\\
+};
+\addlegendentry{Exponential}
+
+\addplot [color=black!50!green]
+  table[row sep=crcr]{%
+0	-inf\\
+0.1	-248.069709851578\\
+0.2	127.362260037105\\
+0.3	196.886698905381\\
+0.4	221.220252509276\\
+0.5	232.483211605937\\
+0.6	238.601362226345\\
+0.7	242.290414084661\\
+0.8	244.684750627319\\
+0.9	246.326299878376\\
+1	247.500490401484\\
+};
+\addlegendentry{Laplace}
+
+\end{axis}
+\end{tikzpicture}%

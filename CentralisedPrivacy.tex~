@@ -226,9 +226,28 @@ consumption are necessarily bounded, the sensitivity of the utility to
 one person's change remains the same, no matter how many people are in
 the population.
 
+\begin{figure}[h]
+  \centering
+  \subfigure[]{
+    \input{src/price-utility.tikz}
+    \label{fig:price-util}
+  }
+  \subfigure[]{
+    \input{src/epsilon-utility.tikz}
+    \label{fig:eps-util}
+  }
+  \caption{Figure\ref{fig:price-util} shows the effect of prices on the expected utility of the provider. Figure~\ref{fig:eps-util} shows the effect of the privacy parameter $\epsilon$ on the average price and expected utility of the provider.}
+  \label{fig:utility}
+\end{figure}
+In Figure~\ref{fig:utility} we can see the effect of price changes on
+the utility, as well as the effect of $\epsilon$ on the average price
+and utility. Higher values of $\epsilon$ definitely increase our
+utility, and bring the expected price level closer to the optimal. 
+
+
 \subsection{The noisy sum mechanism.}
 
-We can use the idea of a noisy sum to calculate prices. This can be efficiently implemented in a distributed manner through a tree structure that also guarantees local differential privacy to each participant. In the simplest case, we can simply add noise to the total ask:
+We can use the idea of a noisy sum to calculate prices. This can be efficiently implemented in a distributed manner through a tree structure that also guarantees local differential privacy to each participant. In the simplest case, we can use
 \begin{align}
   \hat{\ask}_t &= \ask_t + \varepsilon_t, 
   &
@@ -254,38 +273,6 @@ We can use the idea of a noisy sum to calculate prices. This can be efficiently 
   note that the expectation of Laplace noise is zero. Combined with
   linearity, the result follows as well.
 \end{proof}
-An advantage of the noisy sum mechanism is that it can also confer
-local privacy, by adding some noise to each individual's ask. 
-
-\subsection{An illustration.}
-Here we compare the exponential and Laplace mechanisms for a fixed ask
-in the linear price model. The exponential mechanism needs the price
-and utility model as an input. The Laplace mechanism used here, simply
-adds noise to the total ask.
-
-\begin{figure}[h]
-  \centering
-  \subfigure[]{
-    \input{src/price-utility.tikz}
-    \label{fig:price-util}
-  }
-  \\
-  \subfigure[]{
-    \input{src/epsilon-utility.tikz}
-    \label{fig:eps-util}
-  }
-  \subfigure[]{
-    \input{src/epsilon-price.tikz}
-    \label{fig:eps-price}
-  }
-  \caption{Figure\ref{fig:price-util} shows the effect of prices on the expected utility of the provider. Figures~\ref{fig:eps-util} and~\ref{fig:eps-price} show the effect of the privacy parameter $\epsilon$ on the expected utility and price respectively, for the Exponential and Laplace mechanisms. All the results are for elasticity $\elas = 0.1$, ask $\ask_t = 10$, cost $\cost = 0.5$, and baseline $\baseline = 0.1$.} 
-  \label{fig:utility}
-\end{figure}
-Figure~\ref{fig:utility} shows see the effect of price changes on the
-utility, as well as the effect of $\epsilon$ on the average price and
-utility. Higher values of $\epsilon$ definitely increase our utility,
-and bring the expected price level closer to the optimal. We can see
-that the two mechanisms produce comparable results.
 
 \appendix
 \section{Deleted scenes}

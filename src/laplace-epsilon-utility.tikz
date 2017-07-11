@@ -1,0 +1,56 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.475\textwidth,
+height=0.375\textwidth,
+at={(0\textwidth,0\textwidth)},
+scale only axis,
+unbounded coords=jump,
+xmin=0,
+xmax=10,
+xlabel={$\epsilon$},
+ymin=50,
+ymax=300,
+axis background/.style={fill=white},
+legend style={legend cell align=left, align=left, legend plot pos=left, draw=black}
+]
+\addplot [color=blue, dashed]
+  table[row sep=crcr]{%
+0	nan\\
+1	50.5266231738699\\
+2	50.6383115869349\\
+3	50.6755410579567\\
+4	50.6941557934674\\
+5	50.7053246347739\\
+6	50.7127705289784\\
+7	50.7180890248385\\
+8	50.7220778967337\\
+9	50.7251803526523\\
+10	50.727662317387\\
+};
+\addlegendentry{$\price$}
+
+\addplot [color=black!50!green]
+  table[row sep=crcr]{%
+0	-inf\\
+1	247.451814796706\\
+2	251.242641199176\\
+3	251.944646088523\\
+4	252.190347799794\\
+5	252.304072591868\\
+6	252.36584902213\\
+7	252.403098261157\\
+8	252.427274449948\\
+9	252.443849565391\\
+10	252.455705647967\\
+};
+\addlegendentry{$\util$}
+
+\end{axis}
+\end{tikzpicture}%
